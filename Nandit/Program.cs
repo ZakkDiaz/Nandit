@@ -17,9 +17,13 @@ namespace Nandit
             Or or = new Or();
             Nor nor = new Nor();
 
-            //Test(not, 1);
-            //Test(and, 2);
-            //Test(or, 2);
+            Console.WriteLine($"Not");
+            Test(not, 1);
+            Console.WriteLine($"And");
+            Test(and, 2);
+            Console.WriteLine($"Or");
+            Test(or, 2);
+            Console.WriteLine($"Nor");
             Test(nor, 2);
 
             //for (var i = 0; i < 4; i++)

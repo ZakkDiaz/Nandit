@@ -8,10 +8,6 @@ namespace Nandit
     {
         static void Main(string[] args)
         {
-            bool a;
-            bool b;
-            a = b = false;
-
             Not not = new Not();
             And and = new And();
             Or or = new Or();
@@ -25,12 +21,6 @@ namespace Nandit
             Test(or, 2);
             Console.WriteLine($"Nor");
             Test(nor, 2);
-
-            //for (var i = 0; i < 4; i++)
-            //{
-            //    if (i % 2 == 0)
-            //        a = !a;
-            //    b = !b;
         }
 
         public static void Test(NandConfiguration config, int size)

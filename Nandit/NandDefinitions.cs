@@ -89,5 +89,100 @@ namespace Nandit
                 Set(gates, gateLinks);
             }
         }
+        public class Xor : NandConfiguration
+        {
+            public Xor() : base(2)
+            {
+                List<Gate> gates = new List<Gate>();
+                List<GateLink> gateLinks = new List<GateLink>();
+
+                for (var i = 0; i < 2; i++) 
+                {
+                    gates.Add(new Gate(i));
+                }
+
+                Gate A = gates[0];
+                Gate B = gates[1];
+                var nandAB = new GateLink(0, A, B);
+                var notA = new GateLink(1, nandAB, A);
+                var notB = new GateLink(2, nandAB, B);
+                var xorOutput = new GateLink(3, notA, notB);
+
+                gateLinks.Add(nandAB);
+                gateLinks.Add(notA);
+                gateLinks.Add(notB);
+                gateLinks.Add(xorOutput);
+                Set(gates, gateLinks);
+            }
+        }
+        public class Nxor : NandConfiguration
+        {
+            public Nxor() : base(2)
+            {
+                List<Gate> gates = new List<Gate>();
+                List<GateLink> gateLinks = new List<GateLink>();
+
+                for (var i = 0; i < 2; i++)
+                {
+                    gates.Add(new Gate(i));
+                }
+
+                Gate A = gates[0];
+                Gate B = gates[1];
+
+                var nandAB = new GateLink(0, A, B);
+                var notA = new GateLink(1, nandAB, A);
+                var notB = new GateLink(2, nandAB, B);
+                var xorOutput = new GateLink(3, notA, notB);
+                var nxorOutput = new GateLink(4, xorOutput, xorOutput);
+
+                gateLinks.Add(nandAB);
+                gateLinks.Add(notA);
+                gateLinks.Add(notB);
+                gateLinks.Add(xorOutput);
+                gateLinks.Add(nxorOutput);
+
+                Set(gates, gateLinks);
+            }
+        }
+        public class Nand : NandConfiguration
+        {
+            public Nand() : base(2)
+            {
+                List<Gate> gates = new List<Gate>();
+                List<GateLink> gateLinks = new List<GateLink>();
+
+                for (var i = 0; i < 2; i++)
+                {
+                    gates.Add(new Gate(i));
+                }
+
+                Gate A = gates[0];
+                Gate B = gates[1];
+                var nandOutput = new GateLink(0, A, B);
+
+                gateLinks.Add(nandOutput);
+                Set(gates, gateLinks);
+            }
+        }
+        public class Buffer : NandConfiguration
+        {
+            public Buffer() : base(1) 
+            {
+                List<Gate> gates = new List<Gate>();
+                List<GateLink> gateLinks = new List<GateLink>();
+
+                gates.Add(new Gate(0));
+                Gate A = gates[0];
+
+                var firstNot = new GateLink(0, A, A);
+                var secondNot = new GateLink(1, firstNot, firstNot);
+
+                gateLinks.Add(firstNot);
+                gateLinks.Add(secondNot);
+
+                Set(gates, gateLinks);
+            }
+        }
     }
 }

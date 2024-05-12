@@ -36,10 +36,10 @@ namespace Nandit
         {
             if (_from != null)
                 if (_from2 != null)
-                    return Nand.Calc(_from.Calc(), _from2.Calc());
+                    return Nand_c.Calc(_from.Calc(), _from2.Calc());
                 else if(c != null)
-                    return Nand.Calc(_from.Calc(), c.Value);
-            return Nand.Calc(gate1.Value, gate2.Value);
+                    return Nand_c.Calc(_from.Calc(), c.Value);
+            return Nand_c.Calc(gate1.Value, gate2.Value);
         }
     }
 }

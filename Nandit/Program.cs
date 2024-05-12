@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using static Nandit.NandDefinitions;
+using Buffer = Nandit.NandDefinitions.Buffer;
 
 namespace Nandit
 {
@@ -12,6 +13,10 @@ namespace Nandit
             And and = new And();
             Or or = new Or();
             Nor nor = new Nor();
+            Xor xor = new Xor();
+            Nxor nxor = new Nxor();
+            Nand nand = new Nand();
+            Buffer buffer = new Buffer();
 
             Console.WriteLine($"Not");
             Test(not, 1);
@@ -21,6 +26,14 @@ namespace Nandit
             Test(or, 2);
             Console.WriteLine($"Nor");
             Test(nor, 2);
+            Console.WriteLine($"Xor");
+            Test(xor, 2);
+            Console.WriteLine($"Nxor");
+            Test(nxor, 2);
+            Console.WriteLine($"Nand");
+            Test(nand, 2);
+            Console.WriteLine($"Buffer");
+            Test(buffer, 1);
         }
 
         public static void Test(NandConfiguration config, int size)
@@ -36,15 +49,12 @@ namespace Nandit
             {
                 for(var sz = 0; sz < size; sz++)
                 {
-                 
-                    
                     var factor = (i + 1) % (sz + 1);
                     if(factor == 0)
                         permutations[sz] = !permutations[sz];
                 }
                 Console.WriteLine($"{string.Join(',', permutations)}:{config.Calc(permutations)}");
             }
-
         }
     }
 }
